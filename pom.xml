@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>io.gxu</groupId>
+	<artifactId>anymall</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>frontend</name>
+	<description>A simple e-commerce project</description>
+	<url>https://github.com/MsBuggy/AnyMall</url>
+	<organization>
+		<name>Guangxi University</name>
+		<url>http://www.gxu.edu.cn</url>
+	</organization>
+	<properties>
+		<v.log4j>1.2.17</v.log4j>
+		<v.commons-io>2.5</v.commons-io>
+		<v.mysql-driver>6.0.5</v.mysql-driver>
+		<v.shiro>1.3.2</v.shiro>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${v.log4j}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${v.commons-io}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${v.mysql-driver}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${v.shiro}</version>
+		</dependency>
+	</dependencies>
+</project>
