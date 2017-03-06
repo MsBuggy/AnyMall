@@ -1,0 +1,13 @@
+<svg width="24px" height="24px" viewBox="0 0 44 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="#40D800" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Pin-location-house" sketch:type="MSLayerGroup" transform="translate(1.000000, 1.000000)" stroke="#6B6C6E" stroke-width="2">
+            <path fill="#40D800" d="M42,20.9 C42,34.4 25.8,62 21,62 C16.2,62 0,34.4 0,20.9 C0,9.3 9.4,0 21,0 C32.6,0 42,9.4 42,20.9 L42,20.9 Z" id="Shape" sketch:type="MSShapeGroup"></path>
+            <g fill="#ffffff" id="Group" transform="translate(11.000000, 12.000000)" sketch:type="MSShapeGroup">
+                <path d="M17.1,6 L17.1,15 C17.1,16.1 16.1,17 14.9,17 L5.1,17 C3.9,17 2.9,16.1 2.9,15 L2.9,6.2" id="Shape"></path>
+                <path d="M0.1,8.4 L8.1,1.8 C9.2,0.8 11,0.8 12.1,1.8 L20.1,8.4" id="Shape"></path>
+                <path d="M15,0 L15,4.4" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
