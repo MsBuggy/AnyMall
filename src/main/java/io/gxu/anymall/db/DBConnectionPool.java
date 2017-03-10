@@ -1,11 +1,8 @@
-package io.gxu.anymall.dao;
+package io.gxu.anymall.db;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +10,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 public class DBConnectionPool {
-
+	public static final long DEFAULT_GET_TIMEOUT = 1 * 60 * 1000;
 	private String dbUser;
 	private String dbUrl;
 	private String dbPass;
@@ -82,7 +79,7 @@ public class DBConnectionPool {
 
 	public PooledConnection getConnection() {
 		try {
-			return getConnection(Long.MAX_VALUE);
+			return getConnection(DEFAULT_GET_TIMEOUT);
 		} catch (TimeoutException e) {
 			e.printStackTrace();
 			return null;
@@ -153,79 +150,4 @@ public class DBConnectionPool {
 		}
 	}
 
-	public static class PooledConnection {
-		private Connection conn;
-		private boolean locked;
-
-		private PooledConnection(Connection conn) {
-			this.conn = conn;
-		}
-
-		private boolean isLocked() {
-			return locked;
-		}
-
-		private void lock() {
-			this.locked = true;
-		}
-
-		private void release() {
-			this.locked = false;
-		}
-
-		private void setConnection(Connection conn) {
-			this.conn = conn;
-		}
-
-		private Connection getConnection() {
-			return conn;
-		}
-
-		public void close() {
-			this.locked = false;
-		}
-
-		public ResultSet execQuery(String sql) throws SQLException {
-			return conn.createStatement().executeQuery(sql);
-		}
-
-		public ResultSet execQuery(String sql, Object[] params)
-				throws SQLException {
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			for (int i = 0; i < params.length; i++) {
-				stmt.setObject(i + 1, params[i]);
- 			}
-			return stmt.executeQuery();
-		}
-
-		public int execUpdate(String sql) throws SQLException {
-			return conn.createStatement().executeUpdate(sql);
-		}
-
-		public int execUpdate(String sql, Object[] params) throws SQLException {
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			for (int i = 0; i < params.length; i++) {
-				stmt.setObject(i + 1, params[i]);
-			}
-			return stmt.executeUpdate();
-		}
-
-		public int execCallUpdate(String sql, Object[] params)
-				throws SQLException {
-			CallableStatement call = conn.prepareCall(sql);
-			for (int i = 0; i < params.length; i++) {
-				call.setObject(i + 1, params[0]);
-			}
-			return call.executeUpdate();
-		}
-
-		public ResultSet execCallQuery(String sql, Object[] params)
-				throws SQLException {
-			CallableStatement call = conn.prepareCall(sql);
-			for (int i = 0; i < params.length; i++) {
-				call.setObject(i + 1, params[0]);
-			}
-			return call.executeQuery();
-		}
-	}
 }

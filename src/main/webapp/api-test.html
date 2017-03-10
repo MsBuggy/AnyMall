@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>API Test</title>
+<script type="text/javascript" src="./res/js/jquery.min.js"></script>
+<style type="text/css">
+* {
+	font-size: 24px;
+	transition: all 0.8s cubic-bezier(0.01, 0.69, 0.19, 1.05);
+	-moz-transition: all 0.8s cubic-bezier(0.01, 0.69, 0.19, 1.05);
+	-webkit-transition: all 0.8s cubic-bezier(0.01, 0.69, 0.19, 1.05);
+	-o-transition: all 0.8s cubic-bezier(0.01, 0.69, 0.19, 1.05);
+}
+
+div {
+	padding: 10px;
+}
+
+textarea, input {
+	color: #333;
+	padding: 10px;
+	border: 1px solid #000;
+	width: 400px;
+}
+
+textarea:hover, input:hover {
+	box-shadow: 0 0 6px 2px rgba(0, 0, 255, 0.3);
+}
+
+.col {
+	display: table-cell;
+}
+
+button {
+	padding: 10px 15px;
+	background: #2196F3;
+	border: none;
+	border-radius: 4px;
+	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.34);
+	cursor: pointer;
+	color: #fff;
+	font-size: 16px;
+}
+
+#result {
+	background: #333;
+	padding: 20px;
+	color: #fff;
+	font-size: 14px;
+	border-radius: 5px;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding:0;
+}
+</style>
+</head>
+<body>
+	<div class="col">
+		<h1>API测试</h1>
+		<div>
+			<input id="cmd" placeholder="API URL">
+		</div>
+		<div>
+			<div>
+				<button id="addParam">添加参数</button>
+			</div>
+			<ul>
+				<li><input class="param" placeholder="key=value"></li>
+			</ul>
+		</div>
+		<div>
+			<button id="sendReq">发送请求</button>
+		</div>
+	</div>
+	<div class="col">
+		<h1>输出结果</h1>
+		<p id="result"></p>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#sendReq").click(sendReq);
+			$("#addParam").click(function(){
+				$("ul").append('<li><input class="param" placeholder="key=value"></li>');
+			});
+		});
+
+		function sendReq() {
+			$.ajax({
+				url : $("#cmd").val(),
+				type : "POST",
+				data : JSON.stringify($("#params").val().replace(/\n|\t/, "")),
+				contentType : "application/json; charset=utf-8",
+				success : function(data) {
+					$("#result").html(JSON.stringify(data));
+				}
+			});
+		}
+	</script>
+</body>
+</html>

@@ -1,10 +1,10 @@
 package io.gxu.anymall.test;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import io.gxu.anymall.db.DBConnectionPool;
+import io.gxu.anymall.db.PooledConnection;
 
-import io.gxu.anymall.dao.DBConnectionPool;
-import io.gxu.anymall.dao.DBConnectionPool.PooledConnection;
+import java.sql.SQLException;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -33,19 +33,14 @@ public class DBConnectionPoolTest {
 
 	@Test(timeout = 10000)
 	public void testQuery() throws SQLException {
-		ResultSet rs = conn.execQuery("select * from am_user_user");
+		List<Object[]> rs = conn.execQuery("select * from am_user_user");
 		assert (rs != null);
 
 		System.out.println("query result: ");
-		int nColumn = rs.getMetaData().getColumnCount();
-		for (int i = 1; i <= nColumn; i++) {
-			System.out.print(rs.getMetaData().getColumnName(i) + "\t");
-		}
-		System.out.println();
 
-		while (rs.next()) {
-			for (int i = 1; i <= nColumn; i++) {
-				System.out.print(rs.getObject(i) + "\t");
+		for (Object[] row : rs) {
+			for (int i = 0; i < row.length; i++) {
+				System.out.print(row[i] + "\t");
 			}
 			System.out.println();
 		}
@@ -54,21 +49,15 @@ public class DBConnectionPoolTest {
 	@Test(timeout = 10000)
 	public void testQueryWithParams() throws SQLException {
 		Object[] params = new Object[] { 1 };
-		ResultSet rs = conn.execQuery(
+		List<Object[]> rs = conn.execQuery(
 				"select * from am_user_user where gender=?", params);
 
 		assert (rs != null);
 
 		System.out.println("query with param result: ");
-		int nColumn = rs.getMetaData().getColumnCount();
-		for (int i = 1; i <= nColumn; i++) {
-			System.out.print(rs.getMetaData().getColumnName(i) + "\t");
-		}
-		System.out.println();
-
-		while (rs.next()) {
-			for (int i = 1; i <= nColumn; i++) {
-				System.out.print(rs.getObject(i) + "\t");
+		for (Object[] row : rs) {
+			for (int i = 0; i < row.length; i++) {
+				System.out.print(row[i] + "\t");
 			}
 			System.out.println();
 		}

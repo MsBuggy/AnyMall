@@ -17,6 +17,8 @@
 		<v.commons-io>2.5</v.commons-io>
 		<v.mysql-driver>6.0.5</v.mysql-driver>
 		<v.shiro>1.3.2</v.shiro>
+		<v.junit>4.12</v.junit>
+		<v.json>20160810</v.json>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -38,6 +40,16 @@
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-web</artifactId>
 			<version>${v.shiro}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${v.junit}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>${v.json}</version>
 		</dependency>
 	</dependencies>
 </project>

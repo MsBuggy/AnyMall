@@ -1,4 +1,4 @@
-package io.gxu.anymall.dao;
+package io.gxu.anymall.db;
 
 public class TimeoutException extends Exception {
 	public TimeoutException() {
