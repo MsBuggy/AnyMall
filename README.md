@@ -27,3 +27,13 @@ A Simple B2C E-commerce project written in Java.
 
 ## Build项目
 项目右键 Run as->maven clean，然后 maven install
+
+## 数据库导入
+将sql/structrure.sql导入到MySQL中。
+
+## 数据库配置
+配置数据库
+
+```
+src/main/webapp/WEB-INF/db.properties
+```
