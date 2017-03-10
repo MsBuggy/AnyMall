@@ -9,10 +9,13 @@ A Simple B2C E-commerce project written in Java.
 
 ## 下载代码
 1. 使用git命令行checkout代码。
+
 	```
 		 git clone https://github.com/MsBuggy/AnyMall.git
 	```
+	
 2. 使用GUI工具TortoiseGit。直接在Windows某个文件夹里，右键，选择 “Git Clone...”菜单，填入仓库地址：
+
 	```
 		https://github.com/MsBuggy/AnyMall.git
 	```
@@ -23,4 +26,4 @@ A Simple B2C E-commerce project written in Java.
 3. 选择项目目录（选到含有pom.xml的目录）
 
 ## Build项目
-项目右键 Run as->maven clean，然后 maven install.
+项目右键 Run as->maven clean，然后 maven install
