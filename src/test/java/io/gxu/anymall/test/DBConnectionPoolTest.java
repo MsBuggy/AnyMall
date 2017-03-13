@@ -33,7 +33,7 @@ public class DBConnectionPoolTest {
 
 	@Test(timeout = 10000)
 	public void testQuery() throws SQLException {
-		List<Object[]> rs = conn.execQuery("select * from am_user_user");
+		List<Object[]> rs = conn.execQuery("select * from am_user_users");
 		assert (rs != null);
 
 		System.out.println("query result: ");

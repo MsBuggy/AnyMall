@@ -1,18 +1,18 @@
-/*Ö÷É«Ïµ*/
+/*ä¸»è‰²ç³»*/
 @base0: #FB5D00;
 @base1:#BB6430;
 @base2:#A23C00;
 @base3: #FFAF80;
 @base4: #FFEFE6;
-/*¸¨É«Ïµ*/
+/*è¾…è‰²ç³»*/
 @second0: #00A37A;
 @second1: #1F7A63;
 @second2: #00694F;
 @second3: #80FFDF;
 @second4: #E6FFF9;
-/*±³¾°»ÒÉ«*/
+/*èƒŒæ™¯ç°è‰²*/
 @bgGray: rgb(246, 246, 246);
-/*ÄÚÈİ¿í¶ÈÉÏ¡¢ÏÂÏŞ*/
+/*å†…å®¹å®½åº¦ä¸Šã€ä¸‹é™*/
 @bodyMinWidth: 910px;
 @bodyMaxWidth: 1024px;
 
@@ -47,7 +47,7 @@ body {
 .go-top{
 	display: none;
 }
-/*¶¥À¸Ìõ*/
+/*é¡¶æ æ¡*/
 .top-header {
 	background: darken(@bgGray, 5%);
 	font-size: 14px;
@@ -104,7 +104,7 @@ body {
 	}
 }
 
-/*ËÑË÷À¸*/
+/*æœç´¢æ */
 .search-header {
 	height: @searchHeaderHeight;
 	min-width: @bodyMinWidth;
@@ -166,7 +166,7 @@ body {
 	}
 }
 
-/*²Ëµ¥µ¼º½*/
+/*èœå•å¯¼èˆª*/
 .nav-bar{
 	height: 40px;
 	background: @base0;
@@ -217,7 +217,7 @@ body {
 	}
 }
 
-/*¹ö¶¯¹ã¸æ*/
+/*æ»šåŠ¨å¹¿å‘Š*/
 .carousel{
 	background-image: url("../img/bg-carousel.jpg");
 	
@@ -231,7 +231,7 @@ body {
 	}
 }
 
-/*GridÏµÍ³*/
+/*Gridç³»ç»Ÿ*/
 .grid{
 	display:block;
 	
@@ -289,7 +289,7 @@ body {
 	}
 }
 
-/*ÓÒ±ßµ¼º½*/
+/*å³è¾¹å¯¼èˆª*/
 .sidenav-right{
 	display:none;
 	position:fixed;

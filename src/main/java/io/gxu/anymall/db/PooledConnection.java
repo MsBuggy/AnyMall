@@ -50,14 +50,14 @@ public class PooledConnection {
 		ResultSetMetaData metadata = rs.getMetaData();
 		int nColumn = metadata.getColumnCount();
 
-		//添加表头
+		//娣诲姞琛ㄥご
 		Object[] columnNames = new Object[nColumn];
 		for (int i = 1; i <= nColumn; i++) {
 			columnNames[i - 1] = metadata.getColumnName(i);
 		}
 		array.add(columnNames);
 		
-		//读取数据
+		//璇诲彇鏁版嵁
 		while (rs.next()) {
 			Object[] row = new Object[nColumn];
 			for (int i = 0; i < nColumn; i++) {

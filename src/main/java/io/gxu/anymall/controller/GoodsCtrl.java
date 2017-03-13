@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 
 @WebServlet(urlPatterns = "/api/goods")
 public class GoodsCtrl extends HttpServlet {
@@ -35,11 +36,14 @@ public class GoodsCtrl extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 
 		PrintWriter out = response.getWriter();
-
-		String rawContent = IOUtils.toString(request.getReader());
+		 
+ 		String rawContent = IOUtils.toString(request.getReader());
 		log.debug(String.format("request content: %s", rawContent));
-
-		out.print(goodsDAO.findById(1));
+		
+		JSONObject params = new JSONObject(rawContent);
+		int id = params.getInt("id");
+		System.out.println(id);
+		out.print(goodsDAO.findById(id));
 	}
 
 }

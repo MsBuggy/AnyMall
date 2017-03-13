@@ -38,37 +38,37 @@ public class DBConnectionPool {
 	private synchronized void initPool() throws ClassNotFoundException,
 			SQLException, InstantiationException, IllegalAccessException {
 		log.info(String.format(
-				"³õÊ¼»¯Êı¾İ¿âÁ¬½Ó³Ø: ×î´óÁ¬½Ó %s, ³õÊ¼Á¬½ÓÊı %s, ×ÔÔöÁ¬½ÓÊı %s, Êı¾İ¿âÇı¶¯ %s, Êı¾İ¿âURL %s",
+				"åˆå§‹åŒ–æ•°æ®åº“è¿æ¥æ± : æœ€å¤§è¿æ¥ %s, åˆå§‹è¿æ¥æ•° %s, è‡ªå¢è¿æ¥æ•° %s, æ•°æ®åº“é©±åŠ¨ %s, æ•°æ®åº“URL %s",
 				maxConnections, initialConnections, connectionIncrement,
 				jdbcDriverClass, dbUrl));
 
-		// ×¢²áÊı¾İ¿âÇı¶¯
+		// æ³¨å†Œæ•°æ®åº“é©±åŠ¨
 		Driver driver = (Driver) Class.forName(jdbcDriverClass).newInstance();
 		DriverManager.registerDriver(driver);
 
-		// ´´½¨³õÊ¼Á¬½Ó
+		// åˆ›å»ºåˆå§‹è¿æ¥
 		this.createConnections(initialConnections);
 	}
 
 	private void createConnections(int nConnections) {
-		log.info(String.format("×¼±¸´´½¨ %s ¸öĞÂÁ¬½Ó", nConnections));
+		log.info(String.format("å‡†å¤‡åˆ›å»º %s ä¸ªæ–°è¿æ¥", nConnections));
 
 		int nCreate = 0;
 		for (int i = 0; i < nConnections; i++) {
 			if (connectionSet.size() > maxConnections) {
-				log.warn("Á¬½ÓÊı´ïµ½ÉÏÏŞ£¬¾Ü¾ø´´½¨Á¬½Ó");
+				log.warn("è¿æ¥æ•°è¾¾åˆ°ä¸Šé™ï¼Œæ‹’ç»åˆ›å»ºè¿æ¥");
 				break;
 			}
 			try {
 				this.connectionSet.add(new PooledConnection(newConnection()));
 				nCreate++;
 			} catch (SQLException e) {
-				log.error(String.format("´´½¨Á¬½ÓÊ§°Ü£º%s", e.getMessage()));
+				log.error(String.format("åˆ›å»ºè¿æ¥å¤±è´¥ï¼š%s", e.getMessage()));
 				e.printStackTrace();
 			}
 		}
 
-		log.info(String.format("³É¹¦´´½¨ %s ¸öÁ¬½Ó£¬Ê§°Ü  %s ¸ö", nCreate, nConnections
+		log.info(String.format("æˆåŠŸåˆ›å»º %s ä¸ªè¿æ¥ï¼Œå¤±è´¥  %s ä¸ª", nCreate, nConnections
 				- nCreate));
 	}
 
@@ -98,8 +98,8 @@ public class DBConnectionPool {
 			}
 			return conn;
 		}
-		log.error(String.format("»ñÈ¡Á¬½Ó³¬Ê± %s", timeout));
-		throw new TimeoutException("»ñÈ¡Á¬½Ó³¬Ê±: " + timeout);
+		log.error(String.format("è·å–è¿æ¥è¶…æ—¶ %s", timeout));
+		throw new TimeoutException("è·å–è¿æ¥è¶…æ—¶: " + timeout);
 	}
 
 	private void waitForConnection() {
@@ -118,12 +118,12 @@ public class DBConnectionPool {
 			if (!conn.isLocked()) {
 				conn.lock();
 
-				// »ñÈ¡µ½µÄÁ¬½ÓÒÑ¾­Ê§Ğ§£¬ĞèĞÂ½¨Á¬½Ó¡£
+				// è·å–åˆ°çš„è¿æ¥å·²ç»å¤±æ•ˆï¼Œéœ€æ–°å»ºè¿æ¥ã€‚
 				if (!validateConnection(conn.getConnection())) {
 					try {
 						conn.setConnection(newConnection());
 					} catch (SQLException e) {
-						log.error(String.format("´´½¨ĞÂÁ¬½ÓÊ§°Ü£º%s", e.getMessage()));
+						log.error(String.format("åˆ›å»ºæ–°è¿æ¥å¤±è´¥ï¼š%s", e.getMessage()));
 						e.printStackTrace();
 						continue;
 					}
@@ -138,7 +138,7 @@ public class DBConnectionPool {
 		try {
 			return conn.isValid(2000);
 		} catch (Exception e) {
-			log.error(String.format("ÑéÖ¤Êı¾İ¿âÁ¬½Ó×´Ì¬Ê±·¢Éú´íÎó£º%s", e.getMessage()));
+			log.error(String.format("éªŒè¯æ•°æ®åº“è¿æ¥çŠ¶æ€æ—¶å‘ç”Ÿé”™è¯¯ï¼š%s", e.getMessage()));
 			e.printStackTrace();
 			return false;
 		}

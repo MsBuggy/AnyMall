@@ -65,12 +65,7 @@ ul {
 			<input id="cmd" placeholder="API URL">
 		</div>
 		<div>
-			<div>
-				<button id="addParam">添加参数</button>
-			</div>
-			<ul>
-				<li><input class="param" placeholder="key=value"></li>
-			</ul>
+			 <textarea id="params" rows="5" cols="200"></textarea>
 		</div>
 		<div>
 			<button id="sendReq">发送请求</button>
@@ -89,10 +84,13 @@ ul {
 		});
 
 		function sendReq() {
+			var params = {
+				id:1
+			};
 			$.ajax({
 				url : $("#cmd").val(),
 				type : "POST",
-				data : JSON.stringify($("#params").val().replace(/\n|\t/, "")),
+				data : JSON.stringify(params),
 				contentType : "application/json; charset=utf-8",
 				success : function(data) {
 					$("#result").html(JSON.stringify(data));

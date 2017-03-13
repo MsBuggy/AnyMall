@@ -25,7 +25,7 @@ public class ContextInitializer implements ServletContextListener {
 		}
 		String path = this.getClass().getResource("/").getPath()
 				+ dbConf;
-		log.info(String.format("¼ÓÔØÊı¾İ¿âÅäÖÃ: %s", path));
+		log.info(String.format("åŠ è½½æ•°æ®åº“é…ç½®: %s", path));
 		Properties dbProps = new Properties();
 		try {
 			dbProps.load(new FileReader(path));
